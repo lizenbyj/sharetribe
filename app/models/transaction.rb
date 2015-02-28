@@ -2,30 +2,39 @@
 #
 # Table name: transactions
 #
-#  id                                :integer          not null, primary key
-#  starter_id                        :string(255)      not null
-#  listing_id                        :integer          not null
-#  conversation_id                   :integer
-#  automatic_confirmation_after_days :integer
-#  community_id                      :integer          not null
-#  created_at                        :datetime         not null
-#  updated_at                        :datetime         not null
-#  starter_skipped_feedback          :boolean          default(FALSE)
-#  author_skipped_feedback           :boolean          default(FALSE)
-#  last_transition_at                :datetime
-#  current_state                     :string(255)
-#  commission_from_seller            :integer
-#  minimum_commission_cents          :integer          default(0)
-#  minimum_commission_currency       :string(255)
-#  payment_gateway                   :string(255)      default("none"), not null
-#  listing_quantity                  :integer          default(1)
-#  listing_author_id                 :string(255)
-#  listing_title                     :string(255)
-#  unit_price_cents                  :integer
-#  unit_price_currency               :string(8)
-#  payment_process                   :string(31)       default("none")
-#  delivery_method                   :string(31)       default("none")
-#  shipping_price_cents              :integer
+#  id                                 :integer          not null, primary key
+#  starter_id                         :string(255)      not null
+#  listing_id                         :integer          not null
+#  conversation_id                    :integer
+#  automatic_confirmation_after_days  :integer
+#  community_id                       :integer          not null
+#  created_at                         :datetime         not null
+#  updated_at                         :datetime         not null
+#  starter_skipped_feedback           :boolean          default(FALSE)
+#  author_skipped_feedback            :boolean          default(FALSE)
+#  last_transition_at                 :datetime
+#  current_state                      :string(255)
+#  commission_from_seller             :integer
+#  minimum_commission_cents           :integer          default(0)
+#  minimum_commission_currency        :string(255)
+#  payment_gateway                    :string(255)      default("none"), not null
+#  listing_quantity                   :integer          default(1)
+#  listing_author_id                  :string(255)
+#  listing_title                      :string(255)
+#  unit_price_cents                   :integer
+#  unit_price_currency                :string(8)
+#  payment_process                    :string(31)       default("none")
+#  delivery_method                    :string(31)       default("none")
+#  shipping_price_cents               :integer
+#  shipping_address_status            :string(255)
+#  shipping_address_city              :string(255)
+#  shipping_address_country           :string(255)
+#  shipping_address_name              :string(255)
+#  shipping_address_phone             :string(255)
+#  shipping_address_postal_code       :string(255)
+#  shipping_address_state_or_province :string(255)
+#  shipping_address_street1           :string(255)
+#  shipping_address_street2           :string(255)
 #
 # Indexes
 #
@@ -53,8 +62,18 @@ class Transaction < ActiveRecord::Base
     :listing_author_id,
     :unit_price,
     :shipping_price,
-    :delivery_method
-    )
+    :delivery_method,
+    :shipping_price_cents,
+    :shipping_address_status,
+    :shipping_address_city,
+    :shipping_address_country,
+    :shipping_address_name,
+    :shipping_address_phone,
+    :shipping_address_postal_code,
+    :shipping_address_state_or_province,
+    :shipping_address_street1,
+    :shipping_address_street2
+  )
 
   attr_accessor :contract_agreed
 

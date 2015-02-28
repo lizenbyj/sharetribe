@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150226131628) do
+ActiveRecord::Schema.define(:version => 20150228191438) do
 
   create_table "auth_tokens", :force => true do |t|
     t.string   "token"
@@ -867,29 +867,38 @@ ActiveRecord::Schema.define(:version => 20150226131628) do
   add_index "transaction_types", ["url"], :name => "index_transaction_types_on_url"
 
   create_table "transactions", :force => true do |t|
-    t.string   "starter_id",                                                          :null => false
-    t.integer  "listing_id",                                                          :null => false
+    t.string   "starter_id",                                                           :null => false
+    t.integer  "listing_id",                                                           :null => false
     t.integer  "conversation_id"
     t.integer  "automatic_confirmation_after_days"
-    t.integer  "community_id",                                                        :null => false
-    t.datetime "created_at",                                                          :null => false
-    t.datetime "updated_at",                                                          :null => false
-    t.boolean  "starter_skipped_feedback",                        :default => false
-    t.boolean  "author_skipped_feedback",                         :default => false
+    t.integer  "community_id",                                                         :null => false
+    t.datetime "created_at",                                                           :null => false
+    t.datetime "updated_at",                                                           :null => false
+    t.boolean  "starter_skipped_feedback",                         :default => false
+    t.boolean  "author_skipped_feedback",                          :default => false
     t.datetime "last_transition_at"
     t.string   "current_state"
     t.integer  "commission_from_seller"
-    t.integer  "minimum_commission_cents",                        :default => 0
+    t.integer  "minimum_commission_cents",                         :default => 0
     t.string   "minimum_commission_currency"
-    t.string   "payment_gateway",                                 :default => "none", :null => false
-    t.integer  "listing_quantity",                                :default => 1
+    t.string   "payment_gateway",                                  :default => "none", :null => false
+    t.integer  "listing_quantity",                                 :default => 1
     t.string   "listing_author_id"
     t.string   "listing_title"
     t.integer  "unit_price_cents"
-    t.string   "unit_price_currency",               :limit => 8
-    t.string   "payment_process",                   :limit => 31, :default => "none"
-    t.string   "delivery_method",                   :limit => 31, :default => "none"
+    t.string   "unit_price_currency",                :limit => 8
+    t.string   "payment_process",                    :limit => 31, :default => "none"
+    t.string   "delivery_method",                    :limit => 31, :default => "none"
     t.integer  "shipping_price_cents"
+    t.string   "shipping_address_status"
+    t.string   "shipping_address_city"
+    t.string   "shipping_address_country"
+    t.string   "shipping_address_name"
+    t.string   "shipping_address_phone"
+    t.string   "shipping_address_postal_code"
+    t.string   "shipping_address_state_or_province"
+    t.string   "shipping_address_street1"
+    t.string   "shipping_address_street2"
   end
 
   add_index "transactions", ["community_id"], :name => "index_transactions_on_community_id"
